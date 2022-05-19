@@ -1,10 +1,20 @@
 #!/usr/bin/env bash
 set -e
-release=6.0.3-ubuntu
-repo=uvoo/zabbix-server-pgsql
-tag=${repo}:${release}
+
+processTemplates(){
+  for template_file in $(find . -type f -name "*.envsubst"); do
+    dst_file="${template_file%.*}"
+    echo Processing envsubst file $template_file to $dst_file with env variables.
+    envsubst < $template_file > $dst_file
+  done
+}
+
+. .env
+processTemplates
+
+tag=${DST_REPO}:${DST_REPO_TAG}
 echo "Build and push docker container to Dockerhub."
-echo myuser $DOCKERHUB_USERNAME
+echo Using dockerhub user: ${DOCKERHUB_USERNAME}
 docker build --tag ${tag} .
 # echo $DOCKERHUB_USERTOKEN | docker login --username $DOCKERHUB_USERNAME --password-stdin
 docker push ${tag}

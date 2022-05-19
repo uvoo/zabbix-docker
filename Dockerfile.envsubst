@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM zabbix/zabbix-server-pgsql:6.0.3-ubuntu 
+FROM $SRC_REPO:$SRC_REPO_TAG
 USER root
 
 # start custom
@@ -9,6 +9,7 @@ RUN set -eux && \
     DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install \
     dnsutils \
     curl \
+    mtr \
     netcat-openbsd \
     python3 \
     python3-pip \
