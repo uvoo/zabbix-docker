@@ -20,6 +20,5 @@ echo "Build and push docker container to Dockerhub."
 echo Using dockerhub user: ${DOCKERHUB_USERNAME}
 docker build --tag ${tag} .
 # echo $DOCKERHUB_USERTOKEN | docker login --username $DOCKERHUB_USERNAME --password-stdin
-exit
 docker push ${tag}
 # docker logout
