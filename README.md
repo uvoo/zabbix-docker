@@ -11,3 +11,7 @@ This is mainly for adding external scripts/commands
 - Microsoft SQL Support
 - curl
 - Netcat
+
+```
+docker run -it --entrypoint /bin/bash uvoo/zabbix-server-pgsql:6.0.4-ubuntu
+```

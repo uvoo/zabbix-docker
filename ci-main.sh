@@ -12,10 +12,14 @@ processTemplates(){
 . .env
 processTemplates
 
+cd alertscripts/ && find . -type f -exec chmod 0500 -- {} + && cd ../
+cd externalscripts/ && find . -type f -exec chmod 0500 -- {} + && cd ../
+
 tag=${DST_REPO}:${DST_REPO_TAG}
 echo "Build and push docker container to Dockerhub."
 echo Using dockerhub user: ${DOCKERHUB_USERNAME}
 docker build --tag ${tag} .
 # echo $DOCKERHUB_USERTOKEN | docker login --username $DOCKERHUB_USERNAME --password-stdin
+exit
 docker push ${tag}
 # docker logout

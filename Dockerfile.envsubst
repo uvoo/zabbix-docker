@@ -3,6 +3,10 @@ FROM $SRC_REPO:$SRC_REPO_TAG
 USER root
 
 # start custom
+ADD ./alertscripts /usr/lib/zabbix/alertscripts
+ADD ./externalscripts /usr/lib/zabbix/externalscripts
+RUN chown -R zabbix /usr/lib/zabbix/externalscripts /usr/lib/zabbix/alertscripts
+# RUN chmod -R +x /usr/lib/zabbix/externalscripts/* /usr/lib/zabbix/alertscripts/*
 
 RUN set -eux && \
     apt-get -y update && \
