@@ -5,6 +5,7 @@ USER root
 # start custom
 ADD ./alertscripts /usr/lib/zabbix/alertscripts
 ADD ./externalscripts /usr/lib/zabbix/externalscripts
+# ADD ./mibs /var/lib/zabbix/mibs
 RUN chown -R zabbix /usr/lib/zabbix/externalscripts /usr/lib/zabbix/alertscripts
 # RUN chmod -R +x /usr/lib/zabbix/externalscripts/* /usr/lib/zabbix/alertscripts/*
 
