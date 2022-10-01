@@ -9,6 +9,9 @@ ADD ./mibs /var/lib/zabbix/mibs
 RUN chown -R zabbix /usr/lib/zabbix/externalscripts /usr/lib/zabbix/alertscripts
 # RUN chmod -R +x /usr/lib/zabbix/externalscripts/* /usr/lib/zabbix/alertscripts/*
 
+ADD internal_ca_root.crt /usr/local/share/ca-certificates/internal_ca_root.crt
+RUN chmod 644 /usr/local/share/ca-certificates/internal_ca_root.crt && update-ca-certificates
+
 RUN set -eux && \
     apt-get -y update && \
     DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install \
