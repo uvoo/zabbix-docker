@@ -7,6 +7,8 @@ on:
 jobs:
   login:
     runs-on: [ubuntu-20.04] 
+    env:
+      INTERNAL_ROOT_CA_CRT: ${{ secrets.INTERNAL_ROOT_CA_CRT }}
     steps:
       -
         name: Login to Docker Hub
