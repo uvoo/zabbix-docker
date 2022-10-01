@@ -9,6 +9,8 @@ processTemplates(){
   done
 }
 
+echo "${INTERNAL_ROOT_CA_CRT}" > internal_root_ca.crt
+
 . .env
 processTemplates
 
