@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -e
+set -eu
 
 processTemplates(){
   for template_file in $(find . -type f -name "*.envsubst"); do
@@ -21,6 +21,6 @@ tag=${DST_REPO}:${DST_REPO_TAG}
 echo "Build and push docker container to Dockerhub."
 echo Using dockerhub user: ${DOCKERHUB_USERNAME}
 docker build --tag ${tag} .
-# echo $DOCKERHUB_USERTOKEN | docker login --username $DOCKERHUB_USERNAME --password-stdin
+echo $DOCKERHUB_USERTOKEN | docker login --username $DOCKERHUB_USERNAME --password-stdin
 docker push ${tag}
-# docker logout
+docker logout
